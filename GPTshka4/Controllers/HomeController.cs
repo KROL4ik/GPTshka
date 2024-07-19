@@ -18,17 +18,11 @@ namespace GPTshka4.Controllers
             Configuration = configuration;
         }
 
-        public string Index()
-        {
-            YandexGPTSettings yandexGPTSettings = new YandexGPTSettings(Configuration);
+        public IActionResult Index() => View();
+       
 
-            return yandexGPTSettings.model_uri;
-        }
+        public IActionResult Privacy() => View();
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

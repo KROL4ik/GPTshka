@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\GPTshka4.props" />
+</Project>

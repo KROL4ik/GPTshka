@@ -1,4 +1,7 @@
-﻿namespace GPTshka4.Models.YandexGPTModels
+﻿using System.Reflection;
+using System;
+
+namespace GPTshka4.Models.YandexGPTModels
 {
     public class YandexGPTSettings
     {
@@ -8,14 +11,14 @@
 
         public string request_uri { get; set; }
 
-        public string yandex_id { get; set; }
+        public string model_uri { get; set; }
 
         public YandexGPTSettings(IConfiguration configuration)
         {
-            Authorization = new KeyValuePair<string, string>("Authorization", configuration["Authorization"]);
-            x_folder_id = new KeyValuePair<string, string>("x-folder-id", configuration["x-folder-id"]);
-            request_uri = configuration["request-uri"];
-            yandex_id = configuration["yandex-id"];
+            Authorization = new KeyValuePair<string, string>("Authorization", configuration["YandexGPTSettings:Authorization"]);
+            x_folder_id = new KeyValuePair<string, string>("x-folder-id", configuration["YandexGPTSettings:Authorization"]);
+            request_uri = configuration["YandexGPTSettings:Authorization"];
+            model_uri = configuration["YandexGPTSettings:Authorization"];
 
         }
     }

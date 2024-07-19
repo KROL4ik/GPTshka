@@ -22,7 +22,7 @@ namespace GPTshka4.Controllers
         {
             YandexGPTSettings yandexGPTSettings = new YandexGPTSettings(Configuration);
 
-            return yandexGPTSettings.yandex_id;
+            return yandexGPTSettings.model_uri;
         }
 
         public IActionResult Privacy()

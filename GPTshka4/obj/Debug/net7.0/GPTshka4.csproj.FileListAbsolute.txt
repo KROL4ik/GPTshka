@@ -29,3 +29,5 @@ C:\Users\varva\source\repos\GPTshka4\GPTshka4\obj\Debug\net7.0\refint\GPTshka4.d
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\obj\Debug\net7.0\GPTshka4.pdb
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\obj\Debug\net7.0\GPTshka4.genruntimeconfig.cache
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\obj\Debug\net7.0\ref\GPTshka4.dll
+C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\varva\source\repos\GPTshka4\GPTshka4\obj\Debug\net7.0\GPTshka4.csproj.CopyComplete

@@ -15,6 +15,7 @@
             @RenderBody()
         </main>
     </div>
+
     @await Html.PartialAsync("ScriptsPartial")
     @await RenderSectionAsync("Scripts", required: false)
 </body>

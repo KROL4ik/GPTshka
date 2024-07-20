@@ -1,5 +1,3 @@
-using GPTshka4.Models.YandexGPTModels;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

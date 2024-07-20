@@ -2,6 +2,8 @@
 using apiTest.Models;
 using GPTshka4.Models.YandexGPTModels;
 using Newtonsoft.Json;
+using System.Net.Http;
+
 namespace GPTshka4.Source
 {
     public class YandexGPTService
@@ -16,12 +18,12 @@ namespace GPTshka4.Source
 
         }
 
-        public async Task<Answer> SendRequest(string requestText)
+        public async Task<Answer> SendRequest(string requestText, CompletionOptions completion)
         {
             string result;
             using (HttpClient client = _httpClientFactory.CreateClient())
             {
-                HttpResponseMessage responseMessage = await client.SendAsync(BuildRequest(requestText));
+                HttpResponseMessage responseMessage = await client.SendAsync(BuildRequest(requestText,completion));
                 result = await responseMessage.Content.ReadAsStringAsync();
             }
             Answer answer = JsonConvert.DeserializeObject<Answer>(result);
@@ -29,33 +31,32 @@ namespace GPTshka4.Source
 
         }
 
-        private HttpRequestMessage BuildRequest(string requestText)
-        {
+
         
+        private HttpRequestMessage BuildRequest(string requestText,CompletionOptions completion)
+        {
+            RequestBody requestBody = RequestBody.Create(
+                _yandexGPTSettings.model_uri,
+                completion,
+                new Message[] { new Message() { text = requestText, role = "user" } }
+                );
 
-            RequestBody requestBody = new RequestBody();
-            requestBody.completionOptions = new CompletionOptions();
-            requestBody.completionOptions.temperature = 0.6f;
-            requestBody.completionOptions.stream = false;
-            requestBody.completionOptions.maxTokens = 2000;
-            requestBody.modelUri = _yandexGPTSettings.model_uri;
 
-            requestBody.messages = new Message[] { new Message() { text = requestText, role = "user" } };
-
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
-            httpRequestMessage.Headers.Add(_yandexGPTSettings.Authorization.Key,_yandexGPTSettings.Authorization.Value);
-            httpRequestMessage.Headers.Add(_yandexGPTSettings.x_folder_id.Key,_yandexGPTSettings.x_folder_id.Value);
-            httpRequestMessage.Method = HttpMethod.Post;
-            HttpContent httpContent = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody));
-
-            httpRequestMessage.Content = httpContent;
-
-            httpRequestMessage.RequestUri = new Uri(_yandexGPTSettings.request_uri);
-
+            HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Post,
+                Headers = {
+                    { _yandexGPTSettings.Authorization.Key, _yandexGPTSettings.Authorization.Value},
+                    {_yandexGPTSettings.x_folder_id.Key,_yandexGPTSettings.x_folder_id.Value}
+                      },
+                Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody)),
+                RequestUri = new Uri(_yandexGPTSettings.request_uri) 
+            };
+         
             return httpRequestMessage;
-
-
         }
+
+       
 
     }
 }

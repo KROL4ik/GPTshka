@@ -1,6 +1,4 @@
-﻿
-
-namespace apiTest.Models
+﻿namespace apiTest.Models
 {
     public class Answer
     {

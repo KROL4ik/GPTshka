@@ -19,7 +19,6 @@ namespace GPTshka4.Models.YandexGPTModels
             x_folder_id = new KeyValuePair<string, string>("x-folder-id", configuration["YandexGPTSettings:Authorization"]);
             request_uri = configuration["YandexGPTSettings:Authorization"];
             model_uri = configuration["YandexGPTSettings:Authorization"];
-
         }
     }
 }

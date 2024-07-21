@@ -8,7 +8,5 @@
 
         public string totalTokens { get; set; }
 
-     
-
     }
 }

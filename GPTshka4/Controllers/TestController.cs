@@ -13,8 +13,6 @@ namespace GPTshka4.Controllers
         [HttpPost]
         public IActionResult Index(TestModel model)
         {
-            
-
             return View(model);
         }
 

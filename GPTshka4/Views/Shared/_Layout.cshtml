@@ -15,8 +15,10 @@
             @RenderBody()
         </main>
     </div>
-
+   
     @await Html.PartialAsync("ScriptsPartial")
+    @Html.RenderUnobtrusiveAjaxScript()
     @await RenderSectionAsync("Scripts", required: false)
+  
 </body>
 </html>

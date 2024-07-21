@@ -8,4 +8,15 @@ Test view
     <input type='submit' value='Send' />
 </form>
 
-@Model.aboba
+<div>
+    
+    @using (Html.AjaxBeginForm("GptTestPartial", new AjaxOptions { UpdateTargetId = "results" }))
+{
+        <input type="text" name="request" />
+        <input type="submit" value="Отправить" />
+}
+</div>
+<div id="results"></div>
+<div>
+    @Html.PartialAsync("GptTestPartial").Result
+</div>

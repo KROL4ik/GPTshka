@@ -325,7 +325,6 @@ C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Ex
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Extensions.Features.dll
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Extensions.FileProviders.Composite.dll
-C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
@@ -521,3 +520,5 @@ C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\Microsoft.AspNetC
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\varva\source\repos\GPTshka4\GPTshka4\obj\Debug\net7.0\GPTshka4.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\AspNetCore.Unobtrusive.Ajax.dll
+C:\Users\varva\source\repos\GPTshka4\GPTshka4\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Embedded.dll

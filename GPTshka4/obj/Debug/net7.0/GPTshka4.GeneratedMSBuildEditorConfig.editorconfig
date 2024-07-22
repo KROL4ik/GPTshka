@@ -16,12 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\varva\source\repos\GPTshka4\GPTshka4
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/varva/source/repos/GPTshka4/GPTshka4/Views/Home/ChatFieldPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGF0RmllbGRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/varva/source/repos/GPTshka4/GPTshka4/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/varva/source/repos/GPTshka4/GPTshka4/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/varva/source/repos/GPTshka4/GPTshka4/Views/Home/InputBarPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnB1dEJhclBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/varva/source/repos/GPTshka4/GPTshka4/Views/Shared/CssPartial.cshtml]

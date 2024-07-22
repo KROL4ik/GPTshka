@@ -1,0 +1,32 @@
+﻿.innerContainer {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+    border-color: blue;
+    border-style: dotted;
+    position: relative;
+    padding-bottom: 50px;
+    min-height: 80vh;
+}
+    .container {
+}
+body, main {
+    border-color: red;
+    border-style: dotted;
+}
+html {
+    border-color: gray;
+    border-style: dotted;
+}
+.chatBox {
+    border-color: green;
+    border-style: dotted;
+}
+.inputBox {
+
+    border-color: yellow;
+    border-style: dotted;
+    position:fixed;
+    bottom:0px;
+}

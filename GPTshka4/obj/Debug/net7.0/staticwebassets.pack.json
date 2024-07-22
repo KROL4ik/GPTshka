@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\GPTshka4.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\varva\\source\\repos\\GPTshka4\\GPTshka4\\wwwroot\\css\\chat.css",
+      "PackagePath": "staticwebassets\\css\\chat.css"
+    },
+    {
       "Id": "C:\\Users\\varva\\source\\repos\\GPTshka4\\GPTshka4\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

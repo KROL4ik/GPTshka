@@ -1,9 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="innerContainer"> 
-    fasdfasedffa
-
-    @await Html.PartialAsync("ChatFieldPartial")
+<div class="chatContainer">
+    <div class="wrapper">
+        <div class="scroll-container">
+            @await Html.PartialAsync("ChatFieldPartial")
+        </div>
     @await Html.PartialAsync("InputBarPartial")
+    </div>
 </div>
+

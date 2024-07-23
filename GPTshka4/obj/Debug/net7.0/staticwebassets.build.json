@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G65OT3D9SJ4pRr5A+8ycL9rEWNRz+h8pTNDeRPFwiJM=",
+  "Hash": "r9jUJK4U4npg76BxMIIQps9Ukx6NVxVRvGExZ0uaHjA=",
   "Source": "GPTshka4",
   "BasePath": "_content/GPTshka4",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\varva\\source\\repos\\GPTshka4\\GPTshka4\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GPTshka4.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\varva\\source\\repos\\GPTshka4\\GPTshka4\\wwwroot\\aboba.png",
+      "SourceId": "GPTshka4",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\varva\\source\\repos\\GPTshka4\\GPTshka4\\wwwroot\\",
+      "BasePath": "_content/GPTshka4",
+      "RelativePath": "aboba.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\aboba.png"
     },
     {
       "Identity": "C:\\Users\\varva\\source\\repos\\GPTshka4\\GPTshka4\\wwwroot\\css\\chat.css",

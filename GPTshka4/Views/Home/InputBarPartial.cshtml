@@ -1,4 +1,9 @@
 ﻿  <div class="text_bar">
-    <input type="text" class="input_field">
-    <input type="image" class="input_send_button" src="~/aboba.png" alt="">
+    @using (Html.AjaxBeginForm("ChatFieldPartial", new AjaxOptions { UpdateTargetId = "chatBox" }))
+{
+        <input type="text" class="input_field">
+        <input type="submit" value="Отправить">
+    
+    
+}
   </div>

@@ -33,5 +33,11 @@ namespace GPTshka4.Controllers
         {
             return PartialView();
         }
+        [HttpPost]
+        public IActionResult ChatMessagePartial(string message)
+        {
+
+            return PartialView(new ChatMessageModel { Text = message }) ;
+        }
     }
 }

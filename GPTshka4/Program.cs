@@ -1,10 +1,25 @@
 using AspNetCore.Unobtrusive.Ajax;
+using GPTshka4.Context;
+using GPTshka4.Models.DbModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// добавляем контекст ApplicationContext в качестве сервиса в приложение
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationContext>();
 // Add services to the container.
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddUnobtrusiveAjax();
+
+
 
 var app = builder.Build();
 
@@ -16,11 +31,13 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseUnobtrusiveAjax();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

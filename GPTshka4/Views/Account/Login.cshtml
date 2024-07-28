@@ -1,6 +1,6 @@
-﻿@model GPTshka4.ViewModels.RegisterViewModel
-<h2>Регистрация нового пользователя</h2>
-<form method="post" asp-controller="Account" asp-action="Register">
+﻿@model GPTshka4.ViewModels.LoginViewModel
+<h2>Вход в приложение</h2>
+<form method="post" asp-controller="Account" asp-action="Login">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
         <label asp-for="Email"></label><br />
@@ -13,11 +13,10 @@
         <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label asp-for="PasswordConfirm"></label><br />
-        <input asp-for="PasswordConfirm" />
-        <span asp-validation-for="PasswordConfirm"></span>
+        <label asp-for="RememberMe"></label><br />
+        <input asp-for="RememberMe" />
     </div>
     <div>
-        <input type="submit" value="Регистрация" />
+        <input type="submit" value="Войти" />
     </div>
 </form>

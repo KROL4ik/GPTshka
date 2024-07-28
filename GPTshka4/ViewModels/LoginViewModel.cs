@@ -2,7 +2,7 @@
 
 namespace GPTshka4.ViewModels
 {
-    public class RegisterViewModel
+    public class LoginViewModel
     {
         [Required]
         [Display(Name = "Email")]
@@ -13,10 +13,8 @@ namespace GPTshka4.ViewModels
         [Display(Name = "Пароль")]
         public string Password { get; set; }
 
-        [Required]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
-        [DataType(DataType.Password)]
-        [Display(Name = "Подтвердить пароль")]
-        public string PasswordConfirm { get; set; }
+        [Display(Name = "Запомнить?")]
+        public bool RememberMe { get; set; }
+
     }
 }

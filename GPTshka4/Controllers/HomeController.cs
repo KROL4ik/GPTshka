@@ -1,7 +1,5 @@
 ﻿using GPTshka4.Models;
-using GPTshka4.Models.YandexGPTModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 
 namespace GPTshka4.Controllers

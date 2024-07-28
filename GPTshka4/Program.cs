@@ -3,27 +3,25 @@ using GPTshka4.Context;
 using GPTshka4.Models.DbModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-// добавляем контекст ApplicationContext в качестве сервиса в приложение
-string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
-
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationContext>();
-// Add services to the container.
-
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddUnobtrusiveAjax();
 
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -36,9 +34,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseUnobtrusiveAjax();
 app.UseRouting();
-
+app.UseSerilogRequestLogging();
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

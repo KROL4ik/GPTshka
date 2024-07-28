@@ -3,3 +3,7 @@ obj/
 Properties/
 appsettings.Development.json
 GPTshka4.csproj.user
+
+#logs
+
+Logs/

@@ -29,7 +29,7 @@ namespace GPTshka4.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email};
+                User user = new User { Email = model.Email, UserName = model.Email };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -52,7 +52,7 @@ namespace GPTshka4.Controllers
 
 
         [HttpGet]
-        public IActionResult Login( )
+        public IActionResult Login()
         {
             return View(new LoginViewModel());
         }
@@ -61,19 +61,19 @@ namespace GPTshka4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            
-                var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-                if (result.Succeeded)
-                {
-                    // проверяем, принадлежит ли URL приложению
-                        return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Неправильный логин и (или) пароль");
-                }
-            
+
+            var result =
+                await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            if (result.Succeeded)
+            {
+                // проверяем, принадлежит ли URL приложению
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Неправильный логин и (или) пароль");
+            }
+
             return View(model);
         }
 

@@ -1,6 +1,7 @@
 ﻿@model GPTshka4.ViewModels.RegisterViewModel
-<h2>Регистрация нового пользователя</h2>
 <form method="post" asp-controller="Account" asp-action="Register">
+    <div class="regpage_wrapper">
+        <h2>Регистрация нового пользователя</h2>
     <div asp-validation-summary="ModelOnly"></div>
     <div>
         <label asp-for="Email"></label><br />
@@ -19,5 +20,6 @@
     </div>
     <div>
         <input type="submit" value="Регистрация" />
+    </div>
     </div>
 </form>

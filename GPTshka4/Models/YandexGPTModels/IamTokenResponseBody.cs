@@ -3,6 +3,6 @@
     public class IamTokenResponseBody
     {
         public string iamToken { get; set; }
-        public string expiresAt { get; set;}
+        public string expiresAt { get; set; }
     }
 }

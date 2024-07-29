@@ -17,7 +17,7 @@ namespace GPTshka4.Controllers
         }
 
         public IActionResult Index() => View();
-       
+
 
         public IActionResult Privacy() => View();
 
@@ -35,7 +35,7 @@ namespace GPTshka4.Controllers
         public IActionResult ChatMessagePartial(string message)
         {
 
-            return PartialView(new ChatMessageModel { Text = message }) ;
+            return PartialView(new ChatMessageModel { Text = message });
         }
     }
 }

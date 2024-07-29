@@ -1,22 +1,24 @@
 ﻿@model GPTshka4.ViewModels.LoginViewModel
-<h2>Вход в приложение</h2>
 <form method="post" asp-controller="Account" asp-action="Login">
+    <div class="regpage_wrapper">
+<h2>Вход в приложение</h2>
     <div asp-validation-summary="ModelOnly"></div>
-    <div>
+    <div class="email_field">
         <label asp-for="Email"></label><br />
         <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
     </div>
-    <div>
+    <div class="password_field">
         <label asp-for="Password"></label><br />
         <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
-    <div>
+    <div class="remember_me_button">
         <label asp-for="RememberMe"></label><br />
         <input asp-for="RememberMe" />
     </div>
     <div>
         <input type="submit" value="Войти" />
+    </div>
     </div>
 </form>

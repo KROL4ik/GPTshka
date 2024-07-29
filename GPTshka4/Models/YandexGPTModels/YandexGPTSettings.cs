@@ -1,11 +1,8 @@
-﻿using System.Reflection;
-using System;
-
-namespace GPTshka4.Models.YandexGPTModels
+﻿namespace GPTshka4.Models.YandexGPTModels
 {
     public class YandexGPTSettings
     {
-      
+
         public KeyValuePair<string, string> Authorization { get; set; }
         public KeyValuePair<string, string> x_folder_id { get; set; }
 

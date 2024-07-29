@@ -2,7 +2,6 @@
 using apiTest.Models;
 using GPTshka4.Models.YandexGPTModels;
 using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace GPTshka4.Source
 {
@@ -10,11 +9,11 @@ namespace GPTshka4.Source
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly YandexGPTSettings _yandexGPTSettings;
-        public YandexGPTService(IHttpClientFactory httpClientFactory,YandexGPTSettings yandexGPTSettings) 
-        { 
+        public YandexGPTService(IHttpClientFactory httpClientFactory, YandexGPTSettings yandexGPTSettings)
+        {
 
             _httpClientFactory = httpClientFactory;
-            _yandexGPTSettings= yandexGPTSettings;
+            _yandexGPTSettings = yandexGPTSettings;
 
         }
 
@@ -23,7 +22,7 @@ namespace GPTshka4.Source
             string result;
             using (HttpClient client = _httpClientFactory.CreateClient())
             {
-                HttpResponseMessage responseMessage = await client.SendAsync(BuildRequest(requestText,completion));
+                HttpResponseMessage responseMessage = await client.SendAsync(BuildRequest(requestText, completion));
                 result = await responseMessage.Content.ReadAsStringAsync();
             }
             Answer answer = JsonConvert.DeserializeObject<Answer>(result);
@@ -32,8 +31,8 @@ namespace GPTshka4.Source
         }
 
 
-        
-        private HttpRequestMessage BuildRequest(string requestText,CompletionOptions completion)
+
+        private HttpRequestMessage BuildRequest(string requestText, CompletionOptions completion)
         {
             RequestBody requestBody = RequestBody.Create(
                 _yandexGPTSettings.model_uri,
@@ -50,13 +49,13 @@ namespace GPTshka4.Source
                     {_yandexGPTSettings.x_folder_id.Key,_yandexGPTSettings.x_folder_id.Value}
                       },
                 Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody)),
-                RequestUri = new Uri(_yandexGPTSettings.request_uri) 
+                RequestUri = new Uri(_yandexGPTSettings.request_uri)
             };
-         
+
             return httpRequestMessage;
         }
 
-       
+
 
     }
 }

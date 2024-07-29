@@ -31,24 +31,21 @@ div {
     flex-direction: column;
     margin: 0px 18vw;
     height: 100%;
-    
-   
 }
 
 .chat_box {
     display: flex;
     flex-direction: column;
     width: 100%;
-    flex-grow:1;
-    justify-content:flex-end;
-
+    flex-grow: 1;
+    justify-content: flex-end;
 }
+
 .scroll-container {
     display: flex;
     height: 100%;
     overflow: auto;
     flex-direction: column;
-  
 }
 
 .text_bar {
@@ -57,9 +54,7 @@ div {
     min-height: 45px;
     height: 5vw;
     padding: 5px;
-
 }
-
 
 .input_field {
     font-size: larger;
@@ -72,19 +67,17 @@ div {
 }
 
 .chat-message {
-    
     background-color: cornsilk;
-    margin-right:10px;
-    margin-bottom:11px;
-    min-height:50px;
-    
+    margin-right: 10px;
+    margin-bottom: 11px;
+    min-height: 50px;
 }
-.user-message
-{
-    align-self:flex-end;
+
+.user-message {
+    align-self: flex-end;
 }
+
 .gpt-message {
     margin-left: 10px;
     align-self: flex-start;
 }
-

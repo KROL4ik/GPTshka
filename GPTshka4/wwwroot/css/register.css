@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+div {
+    border-width: 1px;
+    border-style: dashed;
+}
+
+form {
+    border-width: 1px;
+    border-style: dashed;
+}
+
+.regpage_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+.register_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reg_button 
+{
+    margin-top: 10px;
+}
+
+.remember_me_button {
+    display:flex;
+    flex-direction:row-reverse;
+}

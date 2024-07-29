@@ -7,7 +7,7 @@ namespace apiTest.Models
         public float temperature { get; set; }
         public int maxTokens { get; set; }
 
-        public static CompletionOptions Create (float _temperature,int _maxTokens)
+        public static CompletionOptions Create(float _temperature, int _maxTokens)
         {
             return new CompletionOptions() { temperature = _temperature, maxTokens = _maxTokens, stream = false };
         }

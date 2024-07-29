@@ -1,0 +1,14 @@
+﻿.container-fluid {
+    display:flex;
+    flex-direction: row;
+}
+
+.navbar-brand {
+    margin-left: 11vw;
+}
+
+.login_registration_group {
+    display:flex;
+    flex-direction:row;
+    justify-items:flex-end;
+}

@@ -10,7 +10,7 @@ namespace apiTest
 
         public Message[] messages { get; set; }
 
-       public static RequestBody Create(string _modelUri,CompletionOptions _completionOptions, Message[]_messages )
+        public static RequestBody Create(string _modelUri, CompletionOptions _completionOptions, Message[] _messages)
         {
             return new RequestBody { completionOptions = _completionOptions, modelUri = _modelUri, messages = _messages };
         }

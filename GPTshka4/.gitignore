@@ -4,7 +4,6 @@ obj/
 Properties/
 appsettings.Development.json
 GPTshka4.csproj.user
-appsettings.json
 #logs
 
 Logs/

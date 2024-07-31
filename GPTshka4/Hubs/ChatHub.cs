@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-
 namespace GPTshka4.Hubs
 {
     public interface IChatClient
@@ -16,7 +15,7 @@ namespace GPTshka4.Hubs
                 .ResiveMessage("System", $"{UserName} присоединился к чату");
         }
 
-
+        
 
     }
 }

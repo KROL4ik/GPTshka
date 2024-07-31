@@ -23,24 +23,23 @@
     </div>
 </form>
 <script>
-   
-   "use strict";
-const joinChat = async () => 
-{
+    "use strict";
+const joinChat = async () =>
+    {
     var connection = new signalR.HubConnectionBuilder()
-            .withUrl("https://localhost:7116/chat")
-        .build();
+    .withUrl("https://localhost:7116/chat")
+    .build();
 
     connection.on("ResiveMessage",(userName,message)=>
     {
         console.log(userName);
-        console.log(message);
+    console.log(message);
     });
-       
+
 
     try {
-            await connection.start();
-            await connection.invoke("JoinChat", getUserName())
+        await connection.start();
+    await connection.invoke("JoinChat", getUserName())
     } catch (error) {
         console.log(error);
     }
@@ -48,10 +47,8 @@ const joinChat = async () =>
     function getUserName()
     {
         var userName = document.getElementById('userName').value;
-        return userName;
+    return userName;
     }
     const button = document.querySelector('#sendButton');
     button.addEventListener('click', joinChat);
-
-
 </script>

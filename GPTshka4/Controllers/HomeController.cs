@@ -37,5 +37,6 @@ namespace GPTshka4.Controllers
 
             return PartialView(new ChatMessageModel { Text = message });
         }
+      
     }
 }

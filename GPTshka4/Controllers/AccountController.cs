@@ -66,7 +66,6 @@ namespace GPTshka4.Controllers
                 await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if (result.Succeeded)
             {
-                // проверяем, принадлежит ли URL приложению
                 return RedirectToAction("Index", "Home");
             }
             else

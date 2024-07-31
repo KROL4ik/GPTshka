@@ -1,11 +1,11 @@
 ﻿@model GPTshka4.ViewModels.LoginViewModel
-<form method="post" asp-controller="Account" asp-action="Login">
+<form method="post" asp-controller="Account" asp-action="Login" >
     <div class="regpage_wrapper">
 <h2>Вход в приложение</h2>
     <div asp-validation-summary="ModelOnly"></div>
     <div class="email_field">
-        <label asp-for="Email"></label><br />
-        <input asp-for="Email" />
+        <label asp-for="Email" ></label><br />
+            <input asp-for="Email" id="userName" />
         <span asp-validation-for="Email"></span>
     </div>
     <div class="password_field">
@@ -18,7 +18,40 @@
         <input asp-for="RememberMe" />
     </div>
     <div>
-        <input type="submit" value="Войти" />
+        <input type="submit" value="Войти" id ="sendButton" />
     </div>
     </div>
 </form>
+<script>
+   
+   "use strict";
+const joinChat = async () => 
+{
+    var connection = new signalR.HubConnectionBuilder()
+            .withUrl("https://localhost:7116/chat")
+        .build();
+
+    connection.on("ResiveMessage",(userName,message)=>
+    {
+        console.log(userName);
+        console.log(message);
+    });
+       
+
+    try {
+            await connection.start();
+            await connection.invoke("JoinChat", getUserName())
+    } catch (error) {
+        console.log(error);
+    }
+}
+    function getUserName()
+    {
+        var userName = document.getElementById('userName').value;
+        return userName;
+    }
+    const button = document.querySelector('#sendButton');
+    button.addEventListener('click', joinChat);
+
+
+</script>

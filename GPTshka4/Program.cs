@@ -1,5 +1,6 @@
 using AspNetCore.Unobtrusive.Ajax;
 using GPTshka4.Context;
+using GPTshka4.Hubs;
 using GPTshka4.Models.DbModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddUnobtrusiveAjax();
+builder.Services.AddSignalR();
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
@@ -37,10 +39,10 @@ app.UseRouting();
 app.UseSerilogRequestLogging();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapHub<ChatHub>("/chat");
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

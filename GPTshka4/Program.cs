@@ -16,6 +16,7 @@ builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Appl
 builder.Services.AddControllersWithViews();
 builder.Services.AddUnobtrusiveAjax();
 builder.Services.AddSignalR();
+builder.Services.AddMemoryCache();
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));

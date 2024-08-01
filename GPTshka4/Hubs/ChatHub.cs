@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Caching.Memory;
+
 namespace GPTshka4.Hubs
 {
     public interface IChatClient
@@ -7,14 +9,35 @@ namespace GPTshka4.Hubs
     }
     public class ChatHub :Hub<IChatClient>
     {
-       public async Task JoinChat(string UserName)
+        private readonly IMemoryCache _cache ;
+       public ChatHub(IMemoryCache cache)
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, UserName);
-            await Clients
-                .Group(UserName)
-                .ResiveMessage("System", $"{UserName} присоединился к чату");
+            _cache= cache;
         }
 
+
+       public async Task JoinChat(string userName)
+        {
+           
+            await Groups.AddToGroupAsync(Context.ConnectionId, userName);
+
+            //_cache.Set(Context.ConnectionId, userName);
+
+            await Clients
+                .Group(userName)
+                .ResiveMessage("System", $"{userName} присоединился к чату");
+        }
+
+        // public async Task Send(string message)
+        //{
+        //    var userName = _cache.Get(Context.ConnectionId).ToString();
+        //    if (userName != null)
+        //    {
+        //        await Clients
+        //            .Group(userName)
+        //            .ResiveMessage(userName, message);
+        //    }
+        //}
         
 
     }

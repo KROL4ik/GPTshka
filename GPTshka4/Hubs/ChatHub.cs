@@ -21,24 +21,24 @@ namespace GPTshka4.Hubs
            
             await Groups.AddToGroupAsync(Context.ConnectionId, userName);
 
-            //_cache.Set(Context.ConnectionId, userName);
-
+            _cache.Set(Context.ConnectionId, userName);
+            
             await Clients
                 .Group(userName)
                 .ResiveMessage("System", $"{userName} присоединился к чату");
         }
 
-        // public async Task Send(string message)
-        //{
-        //    var userName = _cache.Get(Context.ConnectionId).ToString();
-        //    if (userName != null)
-        //    {
-        //        await Clients
-        //            .Group(userName)
-        //            .ResiveMessage(userName, message);
-        //    }
-        //}
-        
+        public async Task Send(string message)
+        {
+            var userName = _cache.Get(Context.ConnectionId).ToString();
+            if (userName != null)
+            {
+                await Clients
+                    .Group(userName)
+                    .ResiveMessage(userName, message);
+            }
+        }
+
 
     }
 }

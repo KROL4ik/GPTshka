@@ -5,7 +5,7 @@ namespace GPTshka4.Hubs
 {
     public interface IChatClient
     {
-        public Task ResiveMessage(string userName,string message);
+        public Task ReceiveMessage(string userName,string message);
     }
     public class ChatHub :Hub<IChatClient>
     {
@@ -14,7 +14,6 @@ namespace GPTshka4.Hubs
         {
             _cache= cache;
         }
-
 
        public async Task JoinChat(string userName)
         {
@@ -25,17 +24,18 @@ namespace GPTshka4.Hubs
             
             await Clients
                 .Group(userName)
-                .ResiveMessage("System", $"{userName} присоединился к чату");
+                .ReceiveMessage("System", $"{userName} присоединился к чату");
         }
 
         public async Task Send(string message)
-        {
+        {   
+            Console.WriteLine(message);
             var userName = _cache.Get(Context.ConnectionId).ToString();
             if (userName != null)
             {
                 await Clients
                     .Group(userName)
-                    .ResiveMessage(userName, message);
+                    .ReceiveMessage(userName, message);
             }
         }
 

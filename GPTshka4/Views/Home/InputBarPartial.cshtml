@@ -1,5 +1,7 @@
-﻿@using (Html.AjaxBeginForm("ChatMessagePartial", new AjaxOptions { UpdateTargetId = "chatBox" }, new { @class = "text_bar" }))
-    {
-        <input type="text" class="input_field" name="message">
+﻿@*@using (Html.AjaxBeginForm("ChatMessagePartial", new AjaxOptions { UpdateTargetId = "chatBox" }, new { @class = "text_bar" }))
+    {*@
+<div class="text_bar"> 
+        <input type="text" class="input_field" name="message" id="inputField">
         <input type="submit" value="Отправить" class="input_send_button" id="sendButton">
-    }
+</div>
+@*    }*@

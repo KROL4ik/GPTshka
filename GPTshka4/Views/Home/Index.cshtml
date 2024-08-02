@@ -10,32 +10,4 @@
     </div>
 </div>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script>
-       const connection = new signalR.HubConnectionBuilder()
-            .withUrl("https://localhost:7116/chat")
-            .build();
-
-        connection.on("ResiveMessage", (userName, message) => {
-            console.log(userName);
-            console.log(message);
-        });
-
-             connection.start().then(()=>{
-              connection.invoke("JoinChat", getUserName());
-             }
-             )
-      
-           
-
-    
-    function getUserName() {
-        var userName = document.getElementById('userName').textContent;
-        return userName;
-    }
-
-    //const button = document.querySelector('#sendButton');
-    //button.addEventListener('click', joinChat);
-
-
-
-</script>
+<script src="~/js/chat.js"></script>

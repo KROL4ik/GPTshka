@@ -7,6 +7,7 @@ namespace GPTshka4.Source
 {
     public class YandexGPTService
     {
+      
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly YandexGPTSettings _yandexGPTSettings;
         public YandexGPTService(IHttpClientFactory httpClientFactory, YandexGPTSettings yandexGPTSettings)
@@ -14,7 +15,6 @@ namespace GPTshka4.Source
 
             _httpClientFactory = httpClientFactory;
             _yandexGPTSettings = yandexGPTSettings;
-
         }
 
         public async Task<Answer> SendRequest(string requestText, CompletionOptions completion)

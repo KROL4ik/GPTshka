@@ -2,10 +2,10 @@ using AspNetCore.Unobtrusive.Ajax;
 using GPTshka4.Context;
 using GPTshka4.Hubs;
 using GPTshka4.Models.DbModels;
+using GPTshka4.Models.YandexGPTModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +17,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddUnobtrusiveAjax();
 builder.Services.AddSignalR();
 builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<YandexGPTSettings>();
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));

@@ -29,6 +29,7 @@ namespace GPTshka4.Controllers
         }
         public IActionResult ChatFieldPartial()
         {
+
             return PartialView();
         }
         [HttpPost]

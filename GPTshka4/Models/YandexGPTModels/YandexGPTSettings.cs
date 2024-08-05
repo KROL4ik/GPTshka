@@ -13,9 +13,9 @@
         public YandexGPTSettings(IConfiguration configuration)
         {
             Authorization = new KeyValuePair<string, string>("Authorization", configuration["YandexGPTSettings:Authorization"]);
-            x_folder_id = new KeyValuePair<string, string>("x-folder-id", configuration["YandexGPTSettings:Authorization"]);
-            request_uri = configuration["YandexGPTSettings:Authorization"];
-            model_uri = configuration["YandexGPTSettings:Authorization"];
+            x_folder_id = new KeyValuePair<string, string>("x-folder-id", configuration["YandexGPTSettings:x-folder-id"]);
+            request_uri = configuration["YandexGPTSettings:request-uri"];
+            model_uri = configuration["YandexGPTSettings:model-uri"];
         }
     }
 }

@@ -3,8 +3,7 @@
     .build();
 
     connection.on("ReceiveMessage", (userName, message) => {
-        console.log(userName);
-        console.log(message);
+        displayMessage(message);
         });
 
         connection.start().then(()=>{

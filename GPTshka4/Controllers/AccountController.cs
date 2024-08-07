@@ -46,6 +46,8 @@ namespace GPTshka4.Controllers
                     }
                 }
             }
+           
+
             return View(model);
         }
 

@@ -1,5 +1,7 @@
 ﻿using GPTshka4.Models.YandexGPTModels;
 using Newtonsoft.Json;
+using Serilog;
+
 
 namespace GPTshka4.Source
 {
@@ -9,11 +11,11 @@ namespace GPTshka4.Source
         private long interval = 3600000;
         private static readonly object synclock = new object();
         private static HttpClient http;
-        private readonly Logger<IamTokenService> logger;
+        private readonly ILogger<IamTokenService> logger;
 
-        public IamTokenService(Logger<IamTokenService> logger)
+        public IamTokenService(ILogger<IamTokenService> logger)
         {
-          //  IamTokenContainer.getInstance(GetIamToken().Result);
+            IamTokenContainer.GetInstance().IamToken = GetIamToken().Result;
             timer = new System.Timers.Timer();
             timer.Interval = interval;
             timer.AutoReset = true;
@@ -29,7 +31,7 @@ namespace GPTshka4.Source
 
         private static async void OnTimeEvent(Object sender, System.Timers.ElapsedEventArgs e)
         {
-          //  IamTokenContainer.getInstance(await GetIamToken());
+            IamTokenContainer.GetInstance().IamToken =  GetIamToken().Result;
         }
 
         private static async Task<string> GetIamToken()
@@ -43,17 +45,13 @@ namespace GPTshka4.Source
             };
             return JsonConvert.DeserializeObject<IamTokenResponseBody>
                 ((await (await http.SendAsync(request)).Content.ReadAsStringAsync())).iamToken;
-
         }
 
-        //protected async override Task ExecuteAsync(CancellationToken stoppingToken)
-        //{
-        //    while (!stoppingToken.IsCancellationRequested)
-        //    {
-        //      //  logger.Log(LogLevel.Information, "IAM token requested, old token: ", IamTokenContainer.getInstance(null).IamToken);
-        //        StartIamTokenService();
-        //      //  logger.Log(LogLevel.Information, "IAM token requested, new token: ", IamTokenContainer.getInstance(null).IamToken);
-        //    }
-        //}
+        protected async override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+       
+                StartIamTokenService();
+ 
+        }
     }
 }

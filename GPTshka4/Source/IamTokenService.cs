@@ -13,7 +13,7 @@ namespace GPTshka4.Source
 
         public IamTokenService(Logger<IamTokenService> logger)
         {
-            IamTokenContainer.getInstance(GetIamToken().Result);
+          //  IamTokenContainer.getInstance(GetIamToken().Result);
             timer = new System.Timers.Timer();
             timer.Interval = interval;
             timer.AutoReset = true;
@@ -29,7 +29,7 @@ namespace GPTshka4.Source
 
         private static async void OnTimeEvent(Object sender, System.Timers.ElapsedEventArgs e)
         {
-            IamTokenContainer.getInstance(await GetIamToken());
+          //  IamTokenContainer.getInstance(await GetIamToken());
         }
 
         private static async Task<string> GetIamToken()
@@ -46,14 +46,14 @@ namespace GPTshka4.Source
 
         }
 
-        protected async override Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                logger.Log(LogLevel.Information, "IAM token requested, old token: ", IamTokenContainer.getInstance(null).IamToken);
-                StartIamTokenService();
-                logger.Log(LogLevel.Information, "IAM token requested, new token: ", IamTokenContainer.getInstance(null).IamToken);
-            }
-        }
+        //protected async override Task ExecuteAsync(CancellationToken stoppingToken)
+        //{
+        //    while (!stoppingToken.IsCancellationRequested)
+        //    {
+        //      //  logger.Log(LogLevel.Information, "IAM token requested, old token: ", IamTokenContainer.getInstance(null).IamToken);
+        //        StartIamTokenService();
+        //      //  logger.Log(LogLevel.Information, "IAM token requested, new token: ", IamTokenContainer.getInstance(null).IamToken);
+        //    }
+        //}
     }
 }

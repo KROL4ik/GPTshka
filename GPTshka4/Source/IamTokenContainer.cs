@@ -6,16 +6,11 @@
 
         public string IamToken { get; set; }
 
-        private IamTokenContainer(string iamToken)
-        {
-            IamToken = iamToken;
-        }
 
-        public static IamTokenContainer getInstance(string iamToken)
+        public static IamTokenContainer GetInstance()
         {
             if (instance == null)
-                instance = new IamTokenContainer(iamToken);
-            instance.IamToken = iamToken;
+                instance = new IamTokenContainer();
             return instance;
         }
     }

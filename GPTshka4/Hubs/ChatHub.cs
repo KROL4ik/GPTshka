@@ -4,7 +4,7 @@ using GPTshka4.Source;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
-using Serilog;
+using System.Drawing;
 
 namespace GPTshka4.Hubs
 {
@@ -45,7 +45,6 @@ namespace GPTshka4.Hubs
             var userName = _cache.Get(Context.ConnectionId).ToString();
             if (userName != null)
             {
-
                 //await Clients
                 //    .Group(userName)
                 //    .ReceiveMessage(userName, message);
@@ -55,7 +54,10 @@ namespace GPTshka4.Hubs
                   .ReceiveMessage(userName, response.result.alternatives[0].message.text);
             }
         }
+        public async void SaveMessage(string message)
+        {
 
+        }
 
     }
 }

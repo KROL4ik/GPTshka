@@ -3,6 +3,7 @@ using GPTshka4.Context;
 using GPTshka4.Hubs;
 using GPTshka4.Models.DbModels;
 using GPTshka4.Models.YandexGPTModels;
+using GPTshka4.Source;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -19,6 +20,7 @@ builder.Services.AddSignalR();
 builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<YandexGPTSettings>();
+builder.Services.AddHostedService<IamTokenService>();
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));

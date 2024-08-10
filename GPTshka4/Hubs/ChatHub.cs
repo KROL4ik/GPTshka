@@ -51,11 +51,7 @@ namespace GPTshka4.Hubs
             await SaveMessage(stringResponse);
             var userName = _cache.Get(Context.ConnectionId).ToString();
             if (userName != null)
-            {
-                //await Clients
-                //    .Group(userName)
-                //    .ReceiveMessage(userName, message);
-
+            { 
                 await Clients
                   .Group(userName)
                   .ReceiveMessage(userName, stringResponse);
@@ -69,10 +65,6 @@ namespace GPTshka4.Hubs
             Message messageModel = new Message() { Date=DateTime.Now,Text= message, UserId=userId};
             _applicationContext.Messages.Add(messageModel);
             await _applicationContext.SaveChangesAsync();
-
-
-
-
 
             // db.Messages.AddAsync();
         }

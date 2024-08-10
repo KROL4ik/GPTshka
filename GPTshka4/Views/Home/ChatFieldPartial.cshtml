@@ -1,4 +1,8 @@
-﻿<div class="chat_box" id="chatBox">
-   
+﻿@model IEnumerable<GPTshka4.Models.DbModels.Message>
+<div class="chat_box" id="chatBox">
+   @foreach(var item in Model)
+    {
+        <div class="chat-message user-message">@item.Text</div>
+    }
 </div>
 

@@ -1,10 +1,11 @@
-﻿@{
+﻿@model IEnumerable<GPTshka4.Models.DbModels.Message>
+@{
     ViewData["Title"] = "Home Page";
 }
 <div class="chatContainer">
     <div class="wrapper">
         <div class="scroll-container">
-            @await Html.PartialAsync("ChatFieldPartial")
+            @await Html.PartialAsync("ChatFieldPartial",Model)
         </div>
         @await Html.PartialAsync("InputBarPartial")
     </div>

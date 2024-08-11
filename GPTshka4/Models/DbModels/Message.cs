@@ -1,5 +1,4 @@
-﻿using System.Data.SqlTypes;
-
+﻿
 namespace GPTshka4.Models.DbModels
 {
     public class Message
@@ -12,5 +11,6 @@ namespace GPTshka4.Models.DbModels
 
         public string UserId { get; set; }
 
+        public bool IsUser { get; set; }
     }
 }

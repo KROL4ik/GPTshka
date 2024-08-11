@@ -1,34 +1,38 @@
 ﻿<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="@Url.Action("Index","Home")">GPTshka</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="navbar-brand"  href="@Url.Action("Index","Home")">GPTshka</a>
+            }
+            else
+            {
+                <a class="navbar-brand" href="@Url.Action("Register","Account")">GPTshka</a>
+            }
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="login_registration_group">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li style="color:white">
+                        <div class="nav-item" style="color:white">
                             <p id="userName">@User.Identity.Name</p>
                             <form method="post" asp-controller="Account" asp-action="Logout">
                                 <input type="submit" value="Выход" />
                             </form>
-                        </li>
+                        </div>
                     }
                     else
                     {
-                        <li style="color:white">
+                        <div class="nav-item my-lg-0" style="color:white">
                             <a href="@Url.Action("Register","Account")">Регистрация</a>
-                        </li>
-                        <li style="color:white">
+                        </div>
+                        <div class="nav-item my-2 my-lg-0" style="color:white">
                             <a asp-controller="Account" asp-action="Login">Вход</a>
-                        </li>
+                        </div>
                     }
-                </ul>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                @* ... *@
+                </div>
             </div>
         </div>
     </nav>

@@ -1,6 +1,7 @@
 ﻿using apiTest.Models;
 using GPTshka4.Context;
 using GPTshka4.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -22,7 +23,7 @@ namespace GPTshka4.Controllers
             _applicationContext = applicationContext;
             _httpContextAccessor = httpContextAccessor;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);

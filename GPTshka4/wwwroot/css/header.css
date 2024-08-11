@@ -1,4 +1,11 @@
-﻿.container-fluid {
+﻿* {
+   /* border-width: 1px;
+    border-style: dashed;
+    border-color: red;*/
+
+}
+
+.container-fluid {
     display:flex;
     flex-direction: row;
 }
@@ -7,8 +14,22 @@
     margin-left: 11vw;
 }
 
-.login_registration_group {
-    display:flex;
-    flex-direction:row;
-    justify-items:flex-end;
+.collapse.navbar-collapse {
+    margin-right: 11vw;
+
+}
+
+.navbar-nav.me-auto.mb-2.mb-lg-0 {
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.nav-item {
+    
+}
+
+.navbar-nav.me-auto.mb-2.mb-lg-0 div a {
+    text-decoration: none;
+    color: white;
+    margin-left:20px;
 }

@@ -47,8 +47,8 @@ namespace GPTshka4.Hubs
             var stringResponse = response.result.alternatives[0].message.text;
             Console.WriteLine("Aboba");
             Console.WriteLine(JsonConvert.SerializeObject(response));
-            await SaveMessage(message);
-            await SaveMessage(stringResponse);
+            await SaveMessage(message,true);
+            await SaveMessage(stringResponse,false);
             var userName = _cache.Get(Context.ConnectionId).ToString();
             if (userName != null)
             { 
@@ -58,15 +58,12 @@ namespace GPTshka4.Hubs
             }
 
         }
-        public async Task SaveMessage(string message)
+        public async Task SaveMessage(string message,bool isUser)
         {
-         
             var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            Message messageModel = new Message() { Date=DateTime.Now,Text= message, UserId=userId};
+            Message messageModel = new Message() { Date=DateTime.Now,Text= message, UserId=userId,IsUser=isUser};
             _applicationContext.Messages.Add(messageModel);
             await _applicationContext.SaveChangesAsync();
-
-            // db.Messages.AddAsync();
         }
 
     }

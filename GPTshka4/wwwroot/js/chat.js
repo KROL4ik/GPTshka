@@ -4,7 +4,7 @@ const connection = new signalR.HubConnectionBuilder()
     .build();
 
     connection.on("ReceiveMessage", (userName, message) => {
-        displayMessage(message);
+        displayMessage(message,"gpt-message");
         });
 
         connection.start().then(()=>{
@@ -14,7 +14,7 @@ const connection = new signalR.HubConnectionBuilder()
 
     function getUserName() {
         var userName = document.getElementById('userName').textContent;
-    return userName;
+        return userName;
     }
 
 document.getElementById("sendButton").addEventListener("click",
@@ -24,19 +24,18 @@ document.getElementById("sendButton").addEventListener("click",
         connection.invoke("Send", message).catch (function (err) {
             return console.error(err.toString());
         });
-        displayMessage(message);
+        displayMessage(message,"user-message");
     }
 )
 
-function displayMessage(message) {
+function displayMessage(message,sender) {
 
     let chatBox = document.getElementById("chatBox");
     const node = document.createElement("div");
-    node.setAttribute("class", "chat-message user-message");
+    node.setAttribute("class", "chat-message "+sender);
     const textNode = document.createTextNode(message);
     node.appendChild(textNode);
     chatBox.appendChild(node);
-
 }
 
 

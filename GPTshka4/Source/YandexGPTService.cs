@@ -2,31 +2,36 @@
 using apiTest.Models;
 using GPTshka4.Models.YandexGPTModels;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Security.Claims;
 
 namespace GPTshka4.Source
-{
+{ 
     public class YandexGPTService
     {
       
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly YandexGPTSettings _yandexGPTSettings;
+        
         public YandexGPTService(IHttpClientFactory httpClientFactory, YandexGPTSettings yandexGPTSettings)
         {
-
+           
             _httpClientFactory = httpClientFactory;
             _yandexGPTSettings = yandexGPTSettings;
         }
 
         public async Task<Answer> SendRequest(string requestText, CompletionOptions completion)
         {
-            string result;
-            using (HttpClient client = _httpClientFactory.CreateClient())
+           
+            using (HttpClient client = new HttpClient())
             {
+                string result;
                 HttpResponseMessage responseMessage = await client.SendAsync(BuildRequest(requestText, completion));
                 result = await responseMessage.Content.ReadAsStringAsync();
+                Answer answer = JsonConvert.DeserializeObject<Answer>(result);
+                return answer;
             }
-            Answer answer = JsonConvert.DeserializeObject<Answer>(result);
-            return answer;
+           
 
         }
 

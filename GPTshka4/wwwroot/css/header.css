@@ -1,8 +1,6 @@
-﻿* {
-   /* border-width: 1px;
-    border-style: dashed;
-    border-color: red;*/
-
+﻿
+header {
+    /*height:62px;*/
 }
 
 .container-fluid {
@@ -25,11 +23,16 @@
 }
 
 .nav-item {
+    margin-left:20px;
+    display:flex;
+}
+
+.nav-item form input {
+    margin-top:5px;
     
 }
 
 .navbar-nav.me-auto.mb-2.mb-lg-0 div a {
     text-decoration: none;
     color: white;
-    margin-left:20px;
 }

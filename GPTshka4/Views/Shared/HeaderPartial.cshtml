@@ -16,19 +16,20 @@
                 <div class="navbar-nav me-auto mb-2 mb-lg-0">
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <span class="navbar-text" id="userName">@User.Identity.Name</span>
                         <div class="nav-item" style="color:white">
-                            <p id="userName">@User.Identity.Name</p>
                             <form method="post" asp-controller="Account" asp-action="Logout">
                                 <input type="submit" value="Выход" />
                             </form>
                         </div>
+
                     }
                     else
                     {
-                        <div class="nav-item my-lg-0" style="color:white">
+                        <div class="nav-item" style="color:white">
                             <a href="@Url.Action("Register","Account")">Регистрация</a>
                         </div>
-                        <div class="nav-item my-2 my-lg-0" style="color:white">
+                        <div class="nav-item" style="color:white">
                             <a asp-controller="Account" asp-action="Login">Вход</a>
                         </div>
                     }

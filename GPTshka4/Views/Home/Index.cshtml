@@ -4,7 +4,7 @@
 }
 <div class="chatContainer">
     <div class="wrapper">
-        <div class="scroll-container">
+        <div class="scroll-container" id="scrollContainer">
             @await Html.PartialAsync("ChatFieldPartial",Model)
         </div>
         @await Html.PartialAsync("InputBarPartial")

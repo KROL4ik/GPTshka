@@ -5,7 +5,9 @@ using GPTshka4.Source;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Security.Claims;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using Message = GPTshka4.Models.DbModels.Message;
 
 
@@ -20,13 +22,17 @@ namespace GPTshka4.Hubs
        private readonly YandexGPTService _yandexGPTService;
        private readonly IHttpContextAccessor _httpContextAccessor;
        private readonly ApplicationContext _applicationContext;
+        private readonly IHttpClientFactory _httpClientFactory;
        private readonly IMemoryCache _cache ;
+        private readonly YandexGPTSettings _yandexGPTSettings;
        public ChatHub(IMemoryCache cache, IHttpClientFactory httpClientFactory, YandexGPTSettings yandexGPTSettings, IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext)
         {
             _yandexGPTService = new YandexGPTService(httpClientFactory, yandexGPTSettings);
             _cache = cache;
             _httpContextAccessor = httpContextAccessor;
             _applicationContext = applicationContext;
+            _httpClientFactory = httpClientFactory;
+            _yandexGPTSettings = yandexGPTSettings;
         }
 
         public async Task JoinChat(string userName)
@@ -43,21 +49,32 @@ namespace GPTshka4.Hubs
 
         public async Task Send(string message)
         {
-            var response =  await _yandexGPTService.SendRequest(message,CompletionOptions.Create(0.6f,2000));
-            var stringResponse = response.result.alternatives[0].message.text;
-            Console.WriteLine("Aboba");
-            Console.WriteLine(JsonConvert.SerializeObject(response));
-            await SaveMessage(message,true);
-            await SaveMessage(stringResponse,false);
-            var userName = _cache.Get(Context.ConnectionId).ToString();
-            if (userName != null)
-            { 
-                await Clients
-                  .Group(userName)
-                  .ReceiveMessage(userName, stringResponse);
-            }
+
+                Answer response = new Answer();
+                while (response.result == null)
+                {
+                    response = await _yandexGPTService.SendRequest(message, CompletionOptions.Create(0.6f, 2000));
+                }
+                var stringResponse = response.result.alternatives[0].message.text;
+                Console.WriteLine("Aboba");
+
+
+                await SaveMessage(message, true);
+                await SaveMessage(stringResponse, false);
+                var userName = _cache.Get(Context.ConnectionId).ToString();
+                if (userName != null)
+                {
+                    await Clients
+                      .Group(userName)
+                      .ReceiveMessage(userName, stringResponse);
+                }
+
+            
+            
+           
 
         }
+    
         public async Task SaveMessage(string message,bool isUser)
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);

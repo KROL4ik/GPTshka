@@ -2,16 +2,6 @@
     box-sizing: border-box;
 }
 
-div {
-    border-width: 1px;
-    border-style: dashed;
-}
-
-form {
-    border-width: 1px;
-    border-style: dashed;
-}
-
 .regpage_wrapper {
     display: flex;
     flex-direction: column;

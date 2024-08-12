@@ -1,7 +1,11 @@
-﻿
+﻿var scrollContainer = document.getElementById("scrollContainer");
+scrollContainer.scrollTop = scrollContainer.scrollHeight
+
+
 const connection = new signalR.HubConnectionBuilder()
     .withUrl("https://localhost:7116/chat")
     .build();
+
 
     connection.on("ReceiveMessage", (userName, message) => {
         displayMessage(message,"gpt-message");
@@ -36,6 +40,7 @@ function displayMessage(message,sender) {
     const textNode = document.createTextNode(message);
     node.appendChild(textNode);
     chatBox.appendChild(node);
+    scrollContainer.scrollTop = scrollContainer.scrollHeight
 }
 
 

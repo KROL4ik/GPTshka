@@ -2,8 +2,6 @@
 using apiTest.Models;
 using GPTshka4.Models.YandexGPTModels;
 using Newtonsoft.Json;
-using System.Net.Http;
-using System.Security.Claims;
 
 namespace GPTshka4.Source
 { 
@@ -23,7 +21,7 @@ namespace GPTshka4.Source
         public async Task<Answer> SendRequest(string requestText, CompletionOptions completion)
         {
            
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = _httpClientFactory.CreateClient())
             {
                 string result;
                 HttpResponseMessage responseMessage = await client.SendAsync(BuildRequest(requestText, completion));
@@ -50,7 +48,7 @@ namespace GPTshka4.Source
             {
                 Method = HttpMethod.Post,
                 Headers = {
-                    { _yandexGPTSettings.Authorization.Key, _yandexGPTSettings.Authorization.Value},
+                    { _yandexGPTSettings.Authorization.Key, _yandexGPTSettings.Authorization.Value/*+_yandexGPTSettings.TokenContainer.IamToken*/},
                     {_yandexGPTSettings.x_folder_id.Key,_yandexGPTSettings.x_folder_id.Value}
                       },
                 Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody)),

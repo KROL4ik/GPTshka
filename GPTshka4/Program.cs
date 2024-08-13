@@ -3,6 +3,7 @@ using GPTshka4.Context;
 using GPTshka4.Hubs;
 using GPTshka4.Models.DbModels;
 using GPTshka4.Models.YandexGPTModels;
+using GPTshka4.Source;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -27,6 +28,8 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
+
+
 
 
 var app = builder.Build();

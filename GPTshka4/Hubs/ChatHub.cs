@@ -15,7 +15,7 @@ namespace GPTshka4.Hubs
 {
     public interface IChatClient
     {
-        public Task ReceiveMessage(string userName,string message);
+        public Task ReceiveMessage(string userName,string message,DateTime dateTime);
     }
     public class ChatHub :Hub<IChatClient>
     {
@@ -44,7 +44,7 @@ namespace GPTshka4.Hubs
             
             await Clients
                 .Group(userName)
-                .ReceiveMessage("System", $"{userName} присоединился к чату");
+                .ReceiveMessage("System", $"{userName} присоединился к чату",DateTime.Now);
         }
 
         public async Task Send(string message)
@@ -66,7 +66,7 @@ namespace GPTshka4.Hubs
                 {
                     await Clients
                       .Group(userName)
-                      .ReceiveMessage(userName, stringResponse);
+                      .ReceiveMessage(userName, stringResponse,DateTime.Now);
                 }
 
             

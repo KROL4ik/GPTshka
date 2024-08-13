@@ -7,8 +7,8 @@ const connection = new signalR.HubConnectionBuilder()
     .build();
 
 
-    connection.on("ReceiveMessage", (userName, message) => {
-        displayMessage(message,"gpt-message");
+    connection.on("ReceiveMessage", (userName, message,dateTime) => {
+        displayMessage(message, "gpt-message", dateTime);
         });
 
         connection.start().then(()=>{
@@ -28,16 +28,17 @@ document.getElementById("sendButton").addEventListener("click",
         connection.invoke("Send", message).catch (function (err) {
             return console.error(err.toString());
         });
-        displayMessage(message,"user-message");
+        var date = new Date();
+        displayMessage(message, "user-message", date);
     }
 )
 
-function displayMessage(message,sender) {
+function displayMessage(message, sender, dateTime) {
 
     let chatBox = document.getElementById("chatBox");
     const node = document.createElement("div");
     node.setAttribute("class", "chat-message "+sender);
-    const textNode = document.createTextNode(message);
+    const textNode = document.createTextNode(message+" "+dateTime);
     node.appendChild(textNode);
     chatBox.appendChild(node);
     scrollContainer.scrollTop = scrollContainer.scrollHeight

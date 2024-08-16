@@ -3,7 +3,7 @@ scrollContainer.scrollTop = scrollContainer.scrollHeight
 
 
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("https://localhost:7116/chat")
+    .withUrl("/chat")
     .build();
 
 

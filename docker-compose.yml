@@ -1,0 +1,32 @@
+version: "23.0.3"
+networks:
+  gptshka4-dev:
+    driver: bridge
+services:
+  app: 
+    container_name: gptshka4
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - gptshka4-dev
+    depends_on:
+      - mysql_db
+  mysql_db:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: gptshkadb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: psw
+    ports:
+      - "3307:3306"
+    networks:
+      - gptshka4-dev
+    volumes:
+      - ./dbdata:/var/lib/mysql/
+volumes:
+    mysql-data:

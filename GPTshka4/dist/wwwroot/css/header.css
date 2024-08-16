@@ -1,0 +1,38 @@
+﻿
+header {
+    /*height:62px;*/
+}
+
+.container-fluid {
+    display:flex;
+    flex-direction: row;
+}
+
+.navbar-brand {
+    margin-left: 11vw;
+}
+
+.collapse.navbar-collapse {
+    margin-right: 11vw;
+
+}
+
+.navbar-nav.me-auto.mb-2.mb-lg-0 {
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.nav-item {
+    margin-left:20px;
+    display:flex;
+}
+
+.nav-item form input {
+    margin-top:5px;
+    
+}
+
+.navbar-nav.me-auto.mb-2.mb-lg-0 div a {
+    text-decoration: none;
+    color: white;
+}
